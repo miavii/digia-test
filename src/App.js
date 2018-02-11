@@ -106,15 +106,15 @@ export default class App extends Component {
     this.setState({rows: this.state.rows.concat(participant)});
   }
   handleUserDelete = (participant) => {
-    let participants = this.state.participants;
-    for(let i = 0; i < participants.length; i++){
-      console.log(participant.id);
-      if(participants[i].id === participant.id){
-        console.log(participants[i]);
-        participants.splice(i, 1);
-      }
-    }
-    this.setState({participants: participants});
+    // let participants = this.state.participants;
+    // for(let i = 0; i < participants.length; i++){
+    //   console.log(participant.id);
+    //   if(participants[i].id === participant.id){
+    //     console.log(participants[i]);
+    //     participants.splice(i, 1);
+    //   }
+    // }
+    // this.setState({participants: participants});
   }
 
   handleUserEdit = (row) => {

@@ -39,10 +39,10 @@ export default class UserForm extends Component {
   render() {
     return(
       <form onSubmit={this.onSubmit}>
-        <input type="text" value={this.props.nameText} name= "name" ref="name" onChange={this.onChange}/>
-        <input type="text" value={this.props.emailText} name= "email" ref="email" onChange={this.onChange} />
-        <input type="text" value={this.props.phoneText} name= "phone" ref="phone" onChange={this.onChange}/>
-        <button> Click </button>
+        <TextField type="text" value={this.props.nameText} name= "name" ref="name" onChange={this.onChange}/>
+        <TextField type="text" value={this.props.emailText} name= "email" ref="email" onChange={this.onChange} />
+        <TextField type="text" value={this.props.phoneText} name= "phone" ref="phone" onChange={this.onChange}/>
+        <FlatButton> Click </FlatButton>
       </form>
     )
   }
