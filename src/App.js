@@ -17,79 +17,83 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { text: 'biiiiitch',
-              participants: [
-                {
-                  "id": "00123",
-                  "firstName": "Erwin",
-                  "lastName": "Schimmel",
-                  "email": "Natalia.Will@gmail.com",
-                  "phone": "924 841-7188"
-                },
-                {
-                  "id": "19969",
-                  "firstName": "Percival",
-                  "lastName": "Ziemann",
-                  "email": "Sabryna.Hagenes36@hotmail.com",
-                  "phone": "476 266-1003"
-                },
-                {
-                  "id": "96149",
-                  "firstName": "Adriana",
-                  "lastName": "Aufderhar",
-                  "email": "Lavinia.Lueilwitz7@hotmail.com",
-                  "phone": "366 173-8993"
-                },
-                {
-                  "id": "24052",
-                  "firstName": "Vincenza",
-                  "lastName": "Schultz",
-                  "email": "Boyd1@hotmail.com",
-                  "phone": "710 717-0902"
-                },
-                {
-                  "id": "33958",
-                  "firstName": "Roosevelt",
-                  "lastName": "Mante",
-                  "email": "Trevor_Heller@hotmail.com",
-                  "phone": "544 861-5854"
-                },
-                {
-                  "id": "01526",
-                  "firstName": "Marietta",
-                  "lastName": "Lesch",
-                  "email": "Jamar.Mante@gmail.com",
-                  "phone": "235 981-6341"
-                },
-                {
-                  "id": "65947",
-                  "firstName": "Kale",
-                  "lastName": "Champlin",
-                  "email": "Frankie_Considine43@gmail.com",
-                  "phone": "991 614-1617"
-                },
-                {
-                  "id": "05664",
-                  "firstName": "Alvina",
-                  "lastName": "Jaskolski",
-                  "email": "Ryley41@hotmail.com",
-                  "phone": "491 451-3900"
-                },
-                {
-                  "id": "44160",
-                  "firstName": "Hayden",
-                  "lastName": "Batz",
-                  "email": "Viva35@yahoo.com",
-                  "phone": "199 644-3358"
-                },
-                {
-                  "id": "84830",
-                  "firstName": "Reed",
-                  "lastName": "Walter",
-                  "email": "Alanis_Hammes78@yahoo.com",
-                  "phone": "290 158-2751"
-                },
-              ],
+    this.state = {
+      nameText: '',
+      emailText: '',
+      phoneText: '',
+      isEdit: 0,
+      participants: [
+        {
+          "id": "00123",
+          "firstName": "Erwin",
+          "lastName": "Schimmel",
+          "email": "Natalia.Will@gmail.com",
+          "phone": "924 841-7188"
+        },
+        {
+          "id": "19969",
+          "firstName": "Percival",
+          "lastName": "Ziemann",
+          "email": "Sabryna.Hagenes36@hotmail.com",
+          "phone": "476 266-1003"
+        },
+        {
+          "id": "96149",
+          "firstName": "Adriana",
+          "lastName": "Aufderhar",
+          "email": "Lavinia.Lueilwitz7@hotmail.com",
+          "phone": "366 173-8993"
+        },
+        {
+          "id": "24052",
+          "firstName": "Vincenza",
+          "lastName": "Schultz",
+          "email": "Boyd1@hotmail.com",
+          "phone": "710 717-0902"
+        },
+        {
+          "id": "33958",
+          "firstName": "Roosevelt",
+          "lastName": "Mante",
+          "email": "Trevor_Heller@hotmail.com",
+          "phone": "544 861-5854"
+        },
+        {
+          "id": "01526",
+          "firstName": "Marietta",
+          "lastName": "Lesch",
+          "email": "Jamar.Mante@gmail.com",
+          "phone": "235 981-6341"
+        },
+        {
+          "id": "65947",
+          "firstName": "Kale",
+          "lastName": "Champlin",
+          "email": "Frankie_Considine43@gmail.com",
+          "phone": "991 614-1617"
+        },
+        {
+          "id": "05664",
+          "firstName": "Alvina",
+          "lastName": "Jaskolski",
+          "email": "Ryley41@hotmail.com",
+          "phone": "491 451-3900"
+        },
+        {
+          "id": "44160",
+          "firstName": "Hayden",
+          "lastName": "Batz",
+          "email": "Viva35@yahoo.com",
+          "phone": "199 644-3358"
+        },
+        {
+          "id": "84830",
+          "firstName": "Reed",
+          "lastName": "Walter",
+          "email": "Alanis_Hammes78@yahoo.com",
+          "phone": "290 158-2751"
+        },
+      ],
                   };
   }
   componentWillMount() {
@@ -106,14 +110,14 @@ export default class App extends Component {
     this.setState({participants: this.state.participants.concat(participant)});
   }
 
-  handleUserEdit = (row) => {
+  handleUserEdit = (participant) => {
     this.setState({
-      nameText: row.firstName,
-      emailText: row.email,
-      phoneText: row.phone,
-      isEdit: row.id
+      nameText: participant.firstName,
+      emailText: participant.email,
+      phoneText: participant.phone,
+      isEdit: participant.id
     });
-    console.log(row.id);
+    console.log(participant);
   }
   handleChangeText = (text, ref) => {
     // this.setState({ text: text });

@@ -34,7 +34,7 @@ export default class Row extends Component {
                     {participant.phone}
                   </TableRowColumn>
                   <TableRowColumn>
-                    <IconButton onClick={()=>this.hello()} tooltip="Edit">
+                    <IconButton onClick={this.editUser.bind(this, participant)} tooltip="Edit">
                       <ModeEditIcon/>
                     </IconButton>
                     <IconButton tooltip="Delete">
