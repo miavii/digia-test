@@ -9,6 +9,8 @@ import Table, {
   TableHeaderColumn,
   TableRowColumn,
 } from 'material-ui/Table';
+import isEmail from 'validator/lib/isEmail';
+import isNumeric from 'validator/lib/isNumeric';
 import Header from './components/Header.js';
 import UserForm from './components/Form.js';
 import Row from './components/UserRow.js';
@@ -109,7 +111,15 @@ export default class App extends Component {
   handleUserAdd = (participant) => {
     this.setState({participants: this.state.participants.concat(participant)});
   }
-
+  handleUserDelete = (participant) => {
+    let participants = this.state.participants;
+    for(let i = 0; i < participants.length; i++){
+      if(participants[i].id === participant.id){
+        participants.splice(i, 1);
+      }
+    }
+    this.setState({participants: participants});
+  }
   handleUserEdit = (participant) => {
     this.setState({
       nameText: participant.firstName,
@@ -165,7 +175,8 @@ export default class App extends Component {
             <TableBody>
               <Row
               {...this.state}
-              editUser={this.handleUserEdit} />
+              editUser={this.handleUserEdit}
+              deleteUser={this.handleUserDelete}/>
             </TableBody>
           </Table>
         </div>

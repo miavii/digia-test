@@ -12,11 +12,11 @@ import ModeEditIcon from 'material-ui-icons/ModeEdit';
 import DeleteIcon from 'material-ui-icons/Delete';
 
 export default class Row extends Component {
+  deleteUser = (participant) => {
+    this.props.deleteUser(participant);
+  }
   editUser = (participant) => {
     this.props.editUser(participant);
-  }
-  hello = () => {
-    console.log("fucking hell ");
   }
   render() {
     return(
@@ -37,7 +37,7 @@ export default class Row extends Component {
                     <IconButton onClick={this.editUser.bind(this, participant)} tooltip="Edit">
                       <ModeEditIcon/>
                     </IconButton>
-                    <IconButton tooltip="Delete">
+                    <IconButton onClick={this.deleteUser.bind(this, participant)} tooltip="Delete">
                       <DeleteIcon/>
                     </IconButton>
                   </TableRowColumn>
