@@ -18,6 +18,9 @@ export default class Row extends Component {
   editUser = (participant) => {
     this.props.editUser(participant);
   }
+  hello = () => {
+    console.log("fucking hell");
+  }
   render() {
     return(
       <div>
@@ -36,7 +39,7 @@ export default class Row extends Component {
                     </TableRowColumn>
                   </span>
                   <TableRowColumn>
-                    <IconButton onClick={this.editUser.bind(this, participant)} tooltip="Edit">
+                    <IconButton onClick={this.hello()} tooltip="Edit">
                       <ModeEditIcon/>
                     </IconButton>
                     <IconButton onClick={this.onDelete(participant.id)} tooltip="Delete">

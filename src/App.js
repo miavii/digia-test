@@ -124,6 +124,7 @@ export default class App extends Component {
       phoneText: row.phone,
       isEdit: row.id
     });
+    console.log(row.id);
   }
   handleChangeText = (text, ref) => {
     // this.setState({ text: text });
