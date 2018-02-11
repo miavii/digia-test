@@ -12,44 +12,39 @@ import ModeEditIcon from 'material-ui-icons/ModeEdit';
 import DeleteIcon from 'material-ui-icons/Delete';
 
 export default class Row extends Component {
-  onDelete = (participant) => {
-    this.props.deleteUser(participant);
-  }
   editUser = (participant) => {
     this.props.editUser(participant);
   }
   hello = () => {
-    console.log("fucking hell");
+    console.log("fucking hell ");
   }
   render() {
     return(
-      <div>
+      <React.Fragment>
       {
         this.props.participants.map(participant => {
-          return <TableRow hover key={participant.id}>
-                  <span>
-                    <TableRowColumn>
-                      {participant.firstName} {participant.lastName}
-                    </TableRowColumn>
-                    <TableRowColumn>
-                      {participant.email}
-                    </TableRowColumn>
-                    <TableRowColumn>
-                      {participant.phone}
-                    </TableRowColumn>
-                  </span>
+          return <TableRow key={participant.id}>
                   <TableRowColumn>
-                    <IconButton onClick={this.hello()} tooltip="Edit">
+                    {participant.firstName} {participant.lastName}
+                  </TableRowColumn>
+                  <TableRowColumn>
+                    {participant.email}
+                  </TableRowColumn>
+                  <TableRowColumn>
+                    {participant.phone}
+                  </TableRowColumn>
+                  <TableRowColumn>
+                    <IconButton onClick={()=>this.hello()} tooltip="Edit">
                       <ModeEditIcon/>
                     </IconButton>
-                    <IconButton onClick={this.onDelete(participant.id)} tooltip="Delete">
+                    <IconButton tooltip="Delete">
                       <DeleteIcon/>
                     </IconButton>
                   </TableRowColumn>
                 </TableRow>})
 
       }
-      </div>
+      </React.Fragment>
     )
   }
 }

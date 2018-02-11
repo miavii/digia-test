@@ -99,22 +99,11 @@ export default class App extends Component {
     // .then(results => results.json())
     // .then(data => this.setState({ rows: data.results }));
 
-    console.log(this.state.rows);
+    console.log(this.state.participants);
   }
 
   handleUserAdd = (participant) => {
-    this.setState({rows: this.state.rows.concat(participant)});
-  }
-  handleUserDelete = (participant) => {
-    // let participants = this.state.participants;
-    // for(let i = 0; i < participants.length; i++){
-    //   console.log(participant.id);
-    //   if(participants[i].id === participant.id){
-    //     console.log(participants[i]);
-    //     participants.splice(i, 1);
-    //   }
-    // }
-    // this.setState({participants: participants});
+    this.setState({participants: this.state.participants.concat(participant)});
   }
 
   handleUserEdit = (row) => {
@@ -160,7 +149,7 @@ export default class App extends Component {
             changeText={this.handleChangeText}
             onUserAdd={this.handleUserAdd}
             onUserUpdate={this.handleUserUpdate}/>
-          <Table selectable="false">
+          <Table >
             <TableHeader >
               <TableRow>
                 <TableHeaderColumn>Name</TableHeaderColumn>
@@ -169,10 +158,9 @@ export default class App extends Component {
                 <TableHeaderColumn></TableHeaderColumn>
               </TableRow>
             </TableHeader>
-            <TableBody showRowHover='true' >
+            <TableBody>
               <Row
               {...this.state}
-              deleteUser={this.handleUserDelete}
               editUser={this.handleUserEdit} />
             </TableBody>
           </Table>

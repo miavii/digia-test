@@ -9,9 +9,10 @@ export default class UserForm extends Component {
     let firstName = this.refs.name.value;
     let email = this.refs.email.value;
     let phone = this.refs.phone.value;
+    console.log(this.refs.name.value);
+    if(!firstName || !email || !phone){
+      alert('Please enter text in all the fields. name=' + firstName + ' email: ' + email + ' phone:' +phone );
 
-    if(!firstName){
-      alert('Please enter a name.');
       return;
     }
     if(this.props.isEdit){
@@ -39,10 +40,10 @@ export default class UserForm extends Component {
   render() {
     return(
       <form onSubmit={this.onSubmit}>
-        <TextField type="text" value={this.props.nameText} name= "name" ref="name" onChange={this.onChange}/>
-        <TextField type="text" value={this.props.emailText} name= "email" ref="email" onChange={this.onChange} />
-        <TextField type="text" value={this.props.phoneText} name= "phone" ref="phone" onChange={this.onChange}/>
-        <FlatButton> Click </FlatButton>
+        <input type="text" value={this.props.nameText} name= "name" ref="name" onChange={this.onChange}/>
+        <input type="text" value={this.props.emailText} name= "email" ref="email" onChange={this.onChange} />
+        <input type="text" value={this.props.phoneText} name= "phone" ref="phone" onChange={this.onChange}/>
+        <button> Click </button>
       </form>
     )
   }
