@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Table, {
   TableBody,
   TableHeader,
   TableRow,
-  TableCell,
   TableHeaderColumn,
   TableRowColumn,
 } from 'material-ui/Table';
@@ -148,7 +146,13 @@ export default class App extends Component {
       }
     }
     participants.push(participant);
-    this.setState({participants: participants});
+    this.setState({
+      participants: participants,
+      isEdit: 0,
+    });
+  }
+  handleCancel = () => {
+    this.setState({isEdit:0,});
   }
 
   render() {
@@ -176,7 +180,11 @@ export default class App extends Component {
               <Row
               {...this.state}
               editUser={this.handleUserEdit}
-              deleteUser={this.handleUserDelete}/>
+              deleteUser={this.handleUserDelete}
+              changeText={this.handleChangeText}
+              onUserUpdate={this.handleUserUpdate}
+              cancelEdit={this.handleCancel}
+              />
             </TableBody>
           </Table>
         </div>
