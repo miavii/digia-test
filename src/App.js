@@ -156,20 +156,27 @@ export default class App extends Component {
   }
 
   render() {
+    const headerStyle = {
+      height: "48px",
+      justifyText:"left",
+      color: "#757575",
+      fontSize:"14px",
+      lineHeight: "16px",
+      fontWeight: "500",
+    }
     return (
-
       <div className="container">
         <Header/>
         <div className="content">
-          <h1>{this.state.text}</h1>
+          <h1>List of Participants</h1>
           <UserForm
             {...this.state}
             changeText={this.handleChangeText}
             onUserAdd={this.handleUserAdd}
             onUserUpdate={this.handleUserUpdate}/>
-          <Table >
-            <TableHeader >
-              <TableRow>
+          <Table>
+            <TableHeader style={headerStyle} displaySelectAll={false} adjustForCheckbox={false}>
+              <TableRow className="table-header">
                 <TableHeaderColumn>Name</TableHeaderColumn>
                 <TableHeaderColumn>Email</TableHeaderColumn>
                 <TableHeaderColumn>Phone</TableHeaderColumn>

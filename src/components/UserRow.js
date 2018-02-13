@@ -52,12 +52,21 @@ export default class Row extends Component {
     }
   }
   render() {
+    const fontStyle = {
+      height: "24px" ,
+      color: "#606060",
+      fontSize:"16px",
+      lineHeight: "24px",
+      fontWeight: "400",
+      paddingTop:"24px",
+      paddingBottom:"24px",
+    }
     return(
       <React.Fragment>
       {
         this.props.participants.map(participant => {
           if(this.props.isEdit === participant.id){
-            return <TableRow key={participant.id}>
+            return <TableRow style={{height: "24px"}} className="row input-row" key={participant.id}>
               <form onSubmit={this.onSubmit}>
                     <TableRowColumn>
                       <input type="text" value={this.props.nameText} name= "name" ref="name" onChange={this.onChange}/>
@@ -75,17 +84,17 @@ export default class Row extends Component {
               </form>
             </TableRow>
           } else{
-            return <TableRow key={participant.id}>
-                    <TableRowColumn>
+            return <TableRow style={{height: "24px"}} className="row table-row" key={participant.id}>
+                    <TableRowColumn style={{height: "24px"}}>
                       {participant.firstName} {participant.lastName}
                     </TableRowColumn>
-                    <TableRowColumn>
+                    <TableRowColumn style={fontStyle}>
                       {participant.email}
                     </TableRowColumn>
-                    <TableRowColumn>
+                    <TableRowColumn style={fontStyle}>
                       {participant.phone}
                     </TableRowColumn>
-                    <TableRowColumn>
+                    <TableRowColumn style={fontStyle}>
                       <IconButton onClick={this.onEdit.bind(this, participant)} tooltip="Edit">
                         <ModeEditIcon/>
                       </IconButton>

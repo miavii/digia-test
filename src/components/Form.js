@@ -47,12 +47,14 @@ export default class UserForm extends Component {
 
   render() {
     return(
-      <form onSubmit={this.onSubmit}>
-        <input type="text" value={this.props.nameText} name= "name" ref="name" onChange={this.onChange}/>
-        <input type="text" value={this.props.emailText} name= "email" ref="email" onChange={this.onChange} />
-        <input type="text" value={this.props.phoneText} name= "phone" ref="phone" onChange={this.onChange}/>
-        <button> Click </button>
-      </form>
+      <div className="white-container">
+        <form style={{flexDirection: "row"}} onSubmit={this.onSubmit}>
+          <input placeholder="Full Name" type="text" name= "name" ref="name" onChange={this.onChange}/>
+          <input placeholder="Email" type="text" name= "email" ref="email" onChange={this.onChange} />
+          <input placeholder="Phone" type="text" name= "phone" ref="phone" onChange={this.onChange}/>
+          <button> Add New </button>
+        </form>
+      </div>
     )
   }
 }

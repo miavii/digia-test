@@ -1,24 +1,6 @@
-.App {
-  text-align: center;
-}
+/** General **/
+body {
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 96px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
 }
 .container {
   max-width: 976px;
@@ -27,21 +9,83 @@
 }
 .content {
   padding:32px;
-
+  background-color: #f1f1f1;
 }
 .header {
   padding:32px;
+  max-height: 32px;
   background-color: #aeb5bc;
 }
 .header .title {
   color: white;
+  font-size:20px;
+  padding-left:16px;
+  top: -8px;
+  position: relative;
 }
 .header img {
   width:32px;
   height: auto;
 }
+input {
+  /* height: 40px; */
+  font-size: 16px;
+  padding:10px;
+  background-color: #f9f9f9;
+  border-width:1px;
+  border-color: #eee;
+  border-style: solid;
+  box-shadow: none;
+  margin-right: 16px;
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+}
+::-webkit-input-placeholder{
+  font-size: 16px;
+  color: #757575;
+  font-weight: 300;
+}
+button {
+  height: 40px;
+  border:none;
+  background-color: #ededed;
+  color: #444;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 24px;
+  padding-right:24px;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+/** Form **/
+.white-container {
+  padding:16px;
+  background-color: white;
+  margin-bottom: 8px;
+}
+
+form > button {
+  align-self: flex-end;
+}
+/** Table **/
+th {
+  justify-content: flex-start;
+}
+.row td {
+
+  /* padding: 24px; 160 */
+}
+.table-header {
+  height: 40px;
+  justify-text:left;
+  color: #757575;
+  font-size:14px;
+  line-height: 16px;
+  font-weight: 500;
+}
+.table-row{
+  height: 72px;
+  color: #606060;
+  font-size:16px;
+  line-height: 24px;
+  font-weight: 400;
 }
