@@ -1,11 +1,13 @@
 /** General **/
-body {
-
+Table {
+  overflow-x: scroll;
 }
 .container {
+  min-width: 265px;
   max-width: 976px;
   justify-content: center;
   margin: auto;
+  overflow-x: scroll;
 }
 .content {
   padding:32px;
@@ -18,7 +20,7 @@ body {
 }
 .header .title {
   color: white;
-  font-size:20px;
+  font-size:22px;
   padding-left:16px;
   top: -8px;
   position: relative;
@@ -27,10 +29,27 @@ body {
   width:32px;
   height: auto;
 }
+
+button {
+  height: 40px;
+  border:none;
+  background-color: #ededed;
+  color: #444;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 24px;
+  padding-right:24px;
+  display: inline-block;
+}
 input {
   /* height: 40px; */
-  font-size: 16px;
-  padding:10px;
+  color: #606060;
+  font-size:16px;
+  line-height: 22px;
+  font-weight: 300;
+  padding-left:16px;
+  padding-top:8px;
+  padding-bottom: 8px;
   background-color: #f9f9f9;
   border-width:1px;
   border-color: #eee;
@@ -44,25 +63,17 @@ input {
   color: #757575;
   font-weight: 300;
 }
-button {
-  height: 40px;
-  border:none;
-  background-color: #ededed;
-  color: #444;
-  font-size: 16px;
-  font-weight: 500;
-  padding-left: 24px;
-  padding-right:24px;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
+
 /** Form **/
 .white-container {
   padding:16px;
   background-color: white;
   margin-bottom: 8px;
 }
-
+h2{
+  font-weight: 500;
+  color:#757575;
+}
 form > button {
   align-self: flex-end;
 }
@@ -70,22 +81,43 @@ form > button {
 th {
   justify-content: flex-start;
 }
-.row td {
 
-  /* padding: 24px; 160 */
+.button-parent {
+  text-align: right;
 }
-.table-header {
-  height: 40px;
-  justify-text:left;
-  color: #757575;
-  font-size:14px;
-  line-height: 16px;
-  font-weight: 500;
+.button-cancel{
+  color: #07f;
 }
-.table-row{
-  height: 72px;
-  color: #606060;
-  font-size:16px;
-  line-height: 24px;
-  font-weight: 400;
+.button-save{
+  background-color: #07f;
+  color: #fff;
 }
+.name{
+  width: 20%;
+  padding-right: 0;
+}
+.name-input{
+  width: 131px;
+  margin:0;
+}
+.email{
+  width:30%;
+}
+.email-input{
+  width:222px;
+  margin:0;
+}
+.button-parent button {
+  margin-right:8px;
+}
+svg{
+  color: #909090 !important;
+}
+.buttonColumn button{
+  margin-left: 10px;
+}
+/*
+Mobile Optimisation
+*/
+
+@media only screen and (min-width:767px) and (max-width: 767px) {}

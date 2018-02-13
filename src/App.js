@@ -159,16 +159,17 @@ export default class App extends Component {
     const headerStyle = {
       height: "48px",
       justifyText:"left",
-      color: "#757575",
+      color: "#505050",
       fontSize:"14px",
       lineHeight: "16px",
       fontWeight: "500",
     }
+
     return (
       <div className="container">
         <Header/>
         <div className="content">
-          <h1>List of Participants</h1>
+          <h2>List of Participants</h2>
           <UserForm
             {...this.state}
             changeText={this.handleChangeText}
@@ -176,11 +177,11 @@ export default class App extends Component {
             onUserUpdate={this.handleUserUpdate}/>
           <Table>
             <TableHeader style={headerStyle} displaySelectAll={false} adjustForCheckbox={false}>
-              <TableRow className="table-header">
-                <TableHeaderColumn>Name</TableHeaderColumn>
-                <TableHeaderColumn>Email</TableHeaderColumn>
-                <TableHeaderColumn>Phone</TableHeaderColumn>
-                <TableHeaderColumn></TableHeaderColumn>
+              <TableRow>
+                <TableHeaderColumn className="name" style={headerStyle}>Name</TableHeaderColumn>
+                <TableHeaderColumn className="email" style={headerStyle}>Email</TableHeaderColumn>
+                <TableHeaderColumn className="phone" style={headerStyle}>Phone</TableHeaderColumn>
+                <TableHeaderColumn className="buttonColumn" style={headerStyle}></TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody>
