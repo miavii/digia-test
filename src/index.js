@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+const theme = createMuiTheme();
 
 const Mapp = () => (
-  <MuiThemeProvider>
+  <MuiThemeProvider theme={theme}>
     <App />
   </MuiThemeProvider>
 );

@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-import {
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
 import IconButton from 'material-ui/IconButton';
 import ModeEditIcon from 'material-ui-icons/ModeEdit';
 import DeleteIcon from 'material-ui-icons/Delete';
@@ -51,6 +47,7 @@ export default class Row extends Component {
       this.refs.phone.value = '';
     }
   }
+
   render() {
     const displayStyle = {
       height: 70 ,
@@ -76,50 +73,47 @@ export default class Row extends Component {
     const iconStyle = {
       color: "#eeeeee",
     }
+    const partToEdit = this.props.isEdit;
     return(
       <React.Fragment>
       {
         this.props.participants.map(participant => {
           if(this.props.isEdit === participant.id){
-
-            return <form onSubmit={this.onSubmit}>
-              <TableRow style={{borderBottomColor: "#f1f1f1"}} key={participant.id}>
-                <TableRowColumn className="name" style={editStyle}>
+            return <tr style={{borderBottomColor: "#f1f1f1"}} key={participant.id}>
+                <td className="name" style={editStyle}>
                   <input className="name-input" type="text" value={this.props.nameText} name= "name" ref="name" onChange={this.onChange}/>
-                </TableRowColumn>
-                <TableRowColumn className="email" style={editStyle}>
+                </td>
+                <td className="email" style={editStyle}>
                   <input className="email-input" type="text" value={this.props.emailText} name= "email" ref="email" onChange={this.onChange}/>
-                </TableRowColumn>
-                <TableRowColumn className="phone phone-input" style={editStyle}>
+                </td>
+                <td className="phone phone-input" style={editStyle}>
                   <input type="text" value={this.props.phoneText} name= "phone" ref="phone" onChange={this.onChange}/>
-                </TableRowColumn>
-                <TableRowColumn className="buttonColumn buttonCol-input" style={editStyle} className="button-parent">
-                  <button className="button-cancel" onClick={this.onCancel}>Cancel</button>
-                  <button className="button-save">Save</button>
-                </TableRowColumn>
+                </td>
+                <td className="buttonColumn buttonCol-input" style={editStyle}>
+                  <button className="button-cancel" onClick={this.onCancel}>Cancel</button><button type="submit" className="button-save">Save</button>
 
-              </TableRow>
-            </form>
-          } else{
-            return <TableRow style={{borderBottomColor: "#f1f1f1", paddingLeft:"16px"}} key={participant.id}>
-                    <TableRowColumn className="name" style={displayStyle}>
-                      <span onClick={this.onEdit.bind(this, participant)}>{participant.firstName} {participant.lastName} </span>
-                    </TableRowColumn>
-                    <TableRowColumn className="email" style={displayStyle}>
+                </td>
+              </tr>
+          } else {
+            return <tr style={{borderBottomColor: "#f1f1f1", paddingLeft:"16px"}} key={participant.id}>
+                    <td className="name" style={displayStyle}>
+                      <span onClick={this.onEdit.bind(this, participant)}>{participant.firstName} </span>
+                    </td>
+                    <td className="email" style={displayStyle}>
                       <span onClick={this.onEdit.bind(this, participant)}>{participant.email}</span>
-                    </TableRowColumn>
-                    <TableRowColumn className="phone"style={displayStyle}>
+                    </td>
+                    <td className="phone"style={displayStyle}>
                       <span onClick={this.onEdit.bind(this, participant)}>{participant.phone}</span>
-                    </TableRowColumn>
-                    <TableRowColumn className="buttonColumn" style={displayStyle, buttonPosition}>
+                    </td>
+                    <td className="buttonColumn" style={displayStyle, buttonPosition}>
                       <IconButton onClick={this.onEdit.bind(this, participant)}>
                         <ModeEditIcon style={{color:"#eeeeee"}}/>
                       </IconButton>
-                      <IconButton color="grey" onClick={this.onDelete.bind(this, participant)}>
+                      <IconButton onClick={this.onDelete.bind(this, participant)}>
                         <DeleteIcon/>
                       </IconButton>
-                    </TableRowColumn>
-                  </TableRow>
+                    </td>
+                  </tr>
           }
         })
       }

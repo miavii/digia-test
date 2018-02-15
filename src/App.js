@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import Table, {
   TableBody,
-  TableHeader,
+  TableHead,
+  TableCell,
   TableRow,
-  TableHeaderColumn,
   TableRowColumn,
+  TableSortLabel,
 } from 'material-ui/Table';
 import isEmail from 'validator/lib/isEmail';
 import isNumeric from 'validator/lib/isNumeric';
@@ -22,6 +23,11 @@ export default class App extends Component {
       emailText: '',
       phoneText: '',
       isEdit: 0,
+      sort: {
+        column: null,
+        direction: 'desc',
+      },
+      show:true,
       participants: [
         {
           "id": "00123",
@@ -95,6 +101,7 @@ export default class App extends Component {
         },
       ],
                   };
+    this.onSort = this.onSort.bind(this);
   }
   componentWillMount() {
     // fetch(
@@ -155,6 +162,57 @@ export default class App extends Component {
     this.setState({isEdit:0,});
   }
 
+
+
+  onSort(column) {
+      return (function (e) {
+        console.log(this.state.participants);
+        let direction = this.state.sort.direction;
+
+        if (this.state.sort.column === column) {
+          // Change the sort direction if the same column is sorted.
+          direction = this.state.sort.direction === 'asc' ? 'desc' : 'asc';
+        }
+
+        // Sort ascending.
+        const sortedData = this.state.participants.sort((a, b) => {
+          if (column === 'name') {
+
+            // This sorts strings taking into consideration numbers in strings.
+            // e.g., Account 1, Account 2, Account 10. Normal sorting would sort it Account 1, Account 10, Account 2.
+            const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+
+            return collator.compare(a.firstName, b.firstName);
+          } else if (column==='email'){
+            // This sorts strings taking into consideration numbers in strings.
+            // e.g., Account 1, Account 2, Account 10. Normal sorting would sort it Account 1, Account 10, Account 2.
+            const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+
+            return collator.compare(a.email, b.email);
+          } else {
+            const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+            
+            return collator.compare(a.phone, b.phone);
+          }
+        });
+        // Reverse the order if direction is descending.
+       if (direction === 'desc') {
+         sortedData.reverse();
+       }
+
+       // Set the new state.
+       this.setState({
+         participants: sortedData,
+         sort: {
+           column,
+           direction,
+         }
+       });
+      }).bind(this); // Bind "this" again because the onSort function is returning another function.
+
+    }
+
+
   render() {
     const headerStyle = {
       height: "48px",
@@ -175,16 +233,16 @@ export default class App extends Component {
             changeText={this.handleChangeText}
             onUserAdd={this.handleUserAdd}
             onUserUpdate={this.handleUserUpdate}/>
-          <Table>
-            <TableHeader style={headerStyle} displaySelectAll={false} adjustForCheckbox={false}>
-              <TableRow>
-                <TableHeaderColumn className="name" style={headerStyle}>Name</TableHeaderColumn>
-                <TableHeaderColumn className="email" style={headerStyle}>Email</TableHeaderColumn>
-                <TableHeaderColumn className="phone" style={headerStyle}>Phone</TableHeaderColumn>
-                <TableHeaderColumn className="buttonColumn" style={headerStyle}></TableHeaderColumn>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
+
+          <table>
+            <tbody>
+            <tr style={headerStyle}>
+                <td className="name" style={headerStyle} onClick={this.onSort('name')}>Name</td>
+                <td className="email" style={headerStyle} onClick={this.onSort('email')}>Email</td>
+                <td className="phone" style={headerStyle} onClick={this.onSort('phone')}>Phone</td>
+                <td className="buttonColumn" style={headerStyle}></td>
+            </tr>
+
               <Row
               {...this.state}
               editUser={this.handleUserEdit}
@@ -193,8 +251,8 @@ export default class App extends Component {
               onUserUpdate={this.handleUserUpdate}
               cancelEdit={this.handleCancel}
               />
-            </TableBody>
-          </Table>
+            </tbody>
+          </table>
         </div>
       </div>
     );

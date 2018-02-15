@@ -82,9 +82,7 @@ th {
   justify-content: flex-start;
 }
 
-.button-parent {
-  text-align: right;
-}
+
 .button-cancel{
   color: #07f;
 }
@@ -113,8 +111,16 @@ th {
 svg{
   color: #909090 !important;
 }
+.buttonColumn{
+  text-align: right;
+}
+button.button-cancel , button.button-save {
+
+  display: inline-block;
+}
 .buttonColumn button{
   margin-left: 10px;
+  display: inline-block;
 }
 /*
 Mobile Optimisation
