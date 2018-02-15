@@ -1,7 +1,11 @@
 /** General **/
-Table {
-  overflow-x: scroll;
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/OpenSans-Regular.ttf');
 }
+
 .container {
   min-width: 265px;
   max-width: 976px;
@@ -47,7 +51,7 @@ input {
   font-size:16px;
   line-height: 22px;
   font-weight: 300;
-  padding-left:16px;
+  padding-left:12px;
   padding-top:8px;
   padding-bottom: 8px;
   background-color: #f9f9f9;
@@ -74,15 +78,54 @@ h2{
   font-weight: 500;
   color:#757575;
 }
-form > button {
-  align-self: flex-end;
+form .button {
+  float: right;
+  color: #757575;
+}
+form .name-input, form .email-input, form .phone-input {
+  margin-right: 16px;
 }
 /** Table **/
-th {
-  justify-content: flex-start;
+table {
+  width:100%;
+  overflow-x: scroll;
+  border-collapse: collapse;padding-left: 16px;
 }
-
-
+.header-rows{
+  justify-content: flex-start;
+  height: 48px;
+  justify-content: left;
+  color: #505050;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #f1f1f1;
+}
+.header-rows td {
+  padding-left: 24px;
+}
+tr.display, tr.edit {
+  height: 70px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #f1f1f1;
+}
+.display td {
+  font-size: 16px;
+  color: #606060;
+  line-height: 24px;
+  font-weight: 300;
+  padding-left: 24px;
+}
+.edit td {
+  padding-left: 16px;
+}
+td:nth-last-child(1){
+  padding-left: 0;
+  padding-right:16px;
+}
 .button-cancel{
   color: #07f;
 }
@@ -95,19 +138,17 @@ th {
   padding-right: 0;
 }
 .name-input{
-  width: 131px;
+  width: 150px;
   margin:0;
 }
 .email{
   width:30%;
 }
 .email-input{
-  width:222px;
+  width:240px;
   margin:0;
 }
-.button-parent button {
-  margin-right:8px;
-}
+
 svg{
   color: #909090 !important;
 }
@@ -115,7 +156,6 @@ svg{
   text-align: right;
 }
 button.button-cancel , button.button-save {
-
   display: inline-block;
 }
 .buttonColumn button{
