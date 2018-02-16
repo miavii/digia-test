@@ -25,6 +25,7 @@
   direction: ltr;
   padding-left: 16px;
   padding-right: 16px;
+  color: #909090;
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
@@ -176,10 +177,6 @@ td:nth-last-child(1){
   width:240px;
   margin:0;
 }
-
-svg{
-  color: #909090 !important;
-}
 .buttonColumn{
   text-align: right;
 }
@@ -191,7 +188,6 @@ button.button-cancel , button.button-save {
   display: inline-block;
 }
 
-
 .sort-direction {
   /*display: inline-block;
    height: 10px;
@@ -199,7 +195,7 @@ button.button-cancel , button.button-save {
   width: 10px */
   background-image: url('/assets/icon-arrow-downward.png');
   background-repeat: no-repeat;
-  background-size:29px;
+  background-size: 29px;
   /* border-left: 5px solid transparent;
   border-right: 5px solid transparent; */
 

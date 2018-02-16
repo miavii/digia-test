@@ -18,12 +18,7 @@ export default class App extends Component {
         column: null,
         direction: 'desc',
       },
-      pagination:{
-        current: 1,
-        perPage: 5,
-      },
       participants: [],
-      displayParticipants: [],
       };
     this.onSort = this.onSort.bind(this);
   }
@@ -31,7 +26,6 @@ export default class App extends Component {
     if(this.state.participants.length === 0 ){
       this.createUser();
     }
-    this.pageRender();
   }
 
   createUser = () => {
@@ -169,46 +163,6 @@ export default class App extends Component {
       return className;
     };
 
-  handleClick(id) {
-    this.setState({pagination: {current: id, perPage:5}});
-    this.pageRender();
-  }
-  pageRender(){
-    const participants = this.state.participants;
-    const {current, perPage} = this.state.pagination;
-    // Logic for displaying todos
-    const indexOfLastPart = current * perPage;
-    const indexOfFirstPart = indexOfLastPart - perPage;
-    const displayUsers = participants.slice(indexOfFirstPart, indexOfLastPart);
-
-    this.setState({
-      displayParticipants: displayUsers
-    });
-  }
-  renderPageNumbers= ()=> {
-    const participants = this.state.participants;
-    const {perPage} = this.state.pagination;
-    // Logic for displaying page numbers
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(participants.length / perPage); i++) {
-      pageNumbers.push(i);
-    }
-
-    return <React.Fragment>
-      {
-        pageNumbers.map(number => {
-          return (
-            <button
-            className="page-button"
-              onClick={this.handleClick.bind(this, number)}
-            >
-              {number}
-            </button>
-          );
-        })
-      }
-    </React.Fragment>
-  }
   render() {
     return (
       <div className="container">
@@ -238,9 +192,6 @@ export default class App extends Component {
             />
             </tbody>
           </table>
-          <div id="page-numbers">
-          {this.renderPageNumbers()}
-          </div>
         </div>
       </div>
     );

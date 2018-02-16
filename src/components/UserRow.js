@@ -53,7 +53,7 @@ export default class Row extends Component {
     return(
       <React.Fragment>
       {
-        this.props.displayParticipants.map(participant => {
+        this.props.participants.map(participant => {
           if(this.props.isEdit === participant.id){
             return <tr className="edit" key={participant.id}>
                 <td className="name">
