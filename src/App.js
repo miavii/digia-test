@@ -1,15 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Table, {
-  TableBody,
-  TableHead,
-  TableCell,
-  TableRow,
-  TableRowColumn,
-  TableSortLabel,
-} from 'material-ui/Table';
-import isEmail from 'validator/lib/isEmail';
-import isMobilePhone from 'validator/lib/isMobilePhone';
 import Faker from 'faker';
 import Header from './components/Header.js';
 import UserForm from './components/Form.js';
@@ -113,7 +103,7 @@ export default class App extends Component {
 
     // console.log(this.state.participants);
 
-    if(this.state.participants.length == 0 ){
+    if(this.state.participants.length === 0 ){
       this.createUser();
       console.log(this.state.participants)
     }
@@ -203,52 +193,59 @@ export default class App extends Component {
 
 
   onSort(column) {
-      return (function (e) {
-        let direction = this.state.sort.direction;
+    return (function (e) {
+      let direction = this.state.sort.direction;
 
-        if (this.state.sort.column === column) {
-          // Change the sort direction if the same column is sorted.
-          direction = this.state.sort.direction === 'asc' ? 'desc' : 'asc';
+      if (this.state.sort.column === column) {
+        // Change the sort direction if the same column is sorted.
+        direction = this.state.sort.direction === 'asc' ? 'desc' : 'asc';
+      }
+
+      // Sort ascending.
+      const sortedData = this.state.participants.sort((a, b) => {
+        if (column === 'name') {
+
+          // This sorts strings taking into consideration numbers in strings.
+          // e.g., Account 1, Account 2, Account 10. Normal sorting would sort it Account 1, Account 10, Account 2.
+          const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+
+          return collator.compare(a.firstName, b.firstName);
+        } else if (column==='email'){
+          // This sorts strings taking into consideration numbers in strings.
+          // e.g., Account 1, Account 2, Account 10. Normal sorting would sort it Account 1, Account 10, Account 2.
+          const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+
+          return collator.compare(a.email, b.email);
+        } else {
+          const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+
+          return collator.compare(a.phone, b.phone);
         }
+      });
+      // Reverse the order if direction is descending.
+     if (direction === 'desc') {
+       sortedData.reverse();
+     }
 
-        // Sort ascending.
-        const sortedData = this.state.participants.sort((a, b) => {
-          if (column === 'name') {
-
-            // This sorts strings taking into consideration numbers in strings.
-            // e.g., Account 1, Account 2, Account 10. Normal sorting would sort it Account 1, Account 10, Account 2.
-            const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-
-            return collator.compare(a.firstName, b.firstName);
-          } else if (column==='email'){
-            // This sorts strings taking into consideration numbers in strings.
-            // e.g., Account 1, Account 2, Account 10. Normal sorting would sort it Account 1, Account 10, Account 2.
-            const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-
-            return collator.compare(a.email, b.email);
-          } else {
-            const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-
-            return collator.compare(a.phone, b.phone);
-          }
-        });
-        // Reverse the order if direction is descending.
-       if (direction === 'desc') {
-         sortedData.reverse();
+     // Set the new state.
+     this.setState({
+       participants: sortedData,
+       sort: {
+         column,
+         direction,
        }
+     });
+    }).bind(this); // Bind "this" again because the onSort function is returning another function.
+  }
+  setArrow = (column) => {
+      let className = 'sort-direction';
 
-       // Set the new state.
-       this.setState({
-         participants: sortedData,
-         sort: {
-           column,
-           direction,
-         }
-       });
-      }).bind(this); // Bind "this" again because the onSort function is returning another function.
+      if (this.state.sort.column === column) {
+        className += this.state.sort.direction === 'asc' ? ' asc' : ' desc';
+      }
 
-    }
-
+      return className;
+    };
 
   render() {
 
@@ -265,9 +262,9 @@ export default class App extends Component {
           <table className="white-container">
             <tbody>
             <tr className="header-rows">
-                <td className="name" onClick={this.onSort('name')}>Name</td>
-                <td className="email" onClick={this.onSort('email')}>Email</td>
-                <td className="phone" onClick={this.onSort('phone')}>Phone</td>
+                <td className="name" onClick={this.onSort('name')}>Name <span className={this.setArrow('name')}></span></td>
+                <td className="email" onClick={this.onSort('email')}>Email <span className={this.setArrow('email')}></span></td>
+                <td className="phone" onClick={this.onSort('phone')}>Phone <span className={this.setArrow('phone')}></span></td>
                 <td className="buttonColumn"></td>
             </tr>
             <Row

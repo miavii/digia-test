@@ -53,26 +53,6 @@ export default class Row extends Component {
   }
 
   render() {
-    const displayStyle = {
-      height: 70 ,
-      color: "#606060",
-      fontSize:"16px",
-      lineHeight: "24px",
-      fontWeight: "300",
-      paddingRight: 0,
-    }
-    const editStyle = {
-
-      paddingRight:16,
-      paddingTop: 14,
-      paddingBottom:10,
-    }
-    const buttonPosition = {
-      textAlign: "right",
-    }
-    const iconStyle = {
-      color: "#eeeeee",
-    }
     return(
       <React.Fragment>
       {
@@ -107,7 +87,7 @@ export default class Row extends Component {
                     </td>
                     <td className="buttonColumn">
                       <IconButton onClick={this.onEdit.bind(this, participant)}>
-                        <ModeEditIcon style={{color:"#eeeeee"}}/>
+                        <ModeEditIcon/>
                       </IconButton>
                       <IconButton onClick={this.onDelete.bind(this, participant)}>
                         <DeleteIcon/>
