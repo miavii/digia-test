@@ -13,7 +13,7 @@ export default class App extends Component {
       nameText: '',
       emailText: '',
       phoneText: '',
-      isEdit: 0,
+      isEdit: 0, // which row to edit
       sort: {
         column: null,
         direction: 'desc',
@@ -23,6 +23,7 @@ export default class App extends Component {
     this.onSort = this.onSort.bind(this);
   }
   componentWillMount() {
+    // Populate User Data using Faker.js
     if(this.state.participants.length === 0 ){
       this.createUser();
     }
@@ -103,6 +104,7 @@ export default class App extends Component {
       isEdit: 0,
     });
   }
+
   handleCancel = () => {
     // Clear edit row
     this.setState({isEdit:0,});
@@ -111,26 +113,20 @@ export default class App extends Component {
   onSort(column) {
     return (function (e) {
       let direction = this.state.sort.direction;
-
       if (this.state.sort.column === column) {
         // Change the sort direction if the same column is sorted.
         direction = this.state.sort.direction === 'asc' ? 'desc' : 'asc';
       }
-
       // Sort ascending.
       const sortedData = this.state.participants.sort((a, b) => {
         if (column === 'name') {
-
           // This sorts strings taking into consideration numbers in strings.
-          // e.g., Account 1, Account 2, Account 10. Normal sorting would sort it Account 1, Account 10, Account 2.
+          // e.g., Name 1, Name 2, Name 10. Normal sorting would sort it Name 1, Name 10, Name 2.
           const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 
           return collator.compare(a.fullName, b.fullName);
         } else if (column==='email'){
-          // This sorts strings taking into consideration numbers in strings.
-          // e.g., Account 1, Account 2, Account 10. Normal sorting would sort it Account 1, Account 10, Account 2.
           const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-
           return collator.compare(a.email, b.email);
         } else {
           const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
@@ -159,7 +155,6 @@ export default class App extends Component {
       if (this.state.sort.column === column) {
         value = this.state.sort.direction === 'asc' ? 'arrow_upward' : 'arrow_downward';
       }
-
       return value;
     };
 
@@ -174,7 +169,7 @@ export default class App extends Component {
             changeText={this.handleChangeText}
             onUserAdd={this.handleUserAdd}
             onUserUpdate={this.handleUserUpdate}/>
-          <div className="test">
+          <div className="table-container">
           <table className="white-container">
             <tbody>
             <tr className="header-rows">

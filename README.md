@@ -1,10 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-# HTML5 test
+# [HTML5 test](https://github.com/digiaonline/docs/tree/master/recruitment/html5)
 
 This is my submission to Digia for the front-end position.
-
-
 
 ### Installation
 
@@ -34,3 +32,6 @@ npm start
   - [Validator.js](https://github.com/chriso/validator.js/)
   - [Faker.js](https://github.com/marak/Faker.js)
   - Material Icons
+
+### Live Build
+Live build is available on [heroku](https://digia-mia.herokuapp.com/).

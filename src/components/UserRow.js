@@ -11,6 +11,7 @@ export default class Row extends Component {
     e.preventDefault();
     this.props.cancelEdit();
   }
+  // Updates state when input changes
   onChange = (e) => {this.props.changeText(e.target.value, e.target.name)};
   onDelete = (participant) => {
     this.props.deleteUser(participant);
@@ -32,9 +33,9 @@ export default class Row extends Component {
     }
     // Simple validator for email and phone using validator.js
     if(!isEmail(email)){
-      alert('Please use proper email');
+      alert('Please use valid email');
     }else if (!isMobilePhone(phone, 'any')){
-      alert('Please use proper phone');
+      alert('Please use valid phone number');
     }else {
       let updatedUser = {
         id: this.props.isEdit,
@@ -68,7 +69,6 @@ export default class Row extends Component {
                 <td className="buttonColumn buttonCol-input">
                   <button className="button-cancel" onClick={this.onCancel}>Cancel</button>
                   <button type="submit" className="button-save" onClick={this.onSubmit.bind(this)}>Save</button>
-
                 </td>
               </tr>
           } else {
