@@ -125,7 +125,7 @@ export default class App extends Component {
           // e.g., Account 1, Account 2, Account 10. Normal sorting would sort it Account 1, Account 10, Account 2.
           const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 
-          return collator.compare(a.firstName, b.firstName);
+          return collator.compare(a.fullName, b.fullName);
         } else if (column==='email'){
           // This sorts strings taking into consideration numbers in strings.
           // e.g., Account 1, Account 2, Account 10. Normal sorting would sort it Account 1, Account 10, Account 2.
@@ -154,13 +154,13 @@ export default class App extends Component {
     }).bind(this); // Bind "this" again because the onSort function is returning another function.
   }
   setArrow = (column) => {
-      let className = 'sort-direction';
+      let value = '';
 
       if (this.state.sort.column === column) {
-        className += this.state.sort.direction === 'asc' ? ' asc' : ' desc';
+        value = this.state.sort.direction === 'asc' ? 'arrow_upward' : 'arrow_downward';
       }
 
-      return className;
+      return value;
     };
 
   render() {
@@ -174,12 +174,13 @@ export default class App extends Component {
             changeText={this.handleChangeText}
             onUserAdd={this.handleUserAdd}
             onUserUpdate={this.handleUserUpdate}/>
+          <div className="test">
           <table className="white-container">
             <tbody>
             <tr className="header-rows">
-                <td className="name" onClick={this.onSort('name')}>Name <span className={this.setArrow('name')}></span></td>
-                <td className="email" onClick={this.onSort('email')}>Email <span className={this.setArrow('email')}></span></td>
-                <td className="phone" onClick={this.onSort('phone')}>Phone <span className={this.setArrow('phone')}></span></td>
+                <td className="name" onClick={this.onSort('name')}>Name <i className="material-icons">{this.setArrow('name')}</i></td>
+                <td className="email" onClick={this.onSort('email')}>Email <i className="material-icons">{this.setArrow('email')}</i></td>
+                <td className="phone" onClick={this.onSort('phone')}>Phone <i className="material-icons">{this.setArrow('phone')}</i></td>
                 <td className="buttonColumn"></td>
             </tr>
             <Row
@@ -192,6 +193,7 @@ export default class App extends Component {
             />
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     );
