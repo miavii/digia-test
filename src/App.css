@@ -216,7 +216,29 @@ td:nth-last-child(1){
   form .button {
     float: none;
   }
-  .name-input, .email-input, .phone-input{
+  .name-input, .email-input, .phone-inputg{
+    margin-bottom: 5px;
+  }
+  .name{
+    width: 165px;
+    padding-right: 0;
+  }
+  .email {
+    width: 260px;
+  }
+  .buttonColumn{
+    width:207px;
+    padding-left: 0;
+    text-align: right;
+  }
+}
+@media (max-width:866px) {
+  form .button {
+    float: none;
+    padding-left:16px;
+    padding-right:20px;
+  }
+  .name-input, .email-input, .phone-inputg{
     margin-bottom: 5px;
   }
   .name{
