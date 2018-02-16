@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import IconButton from 'material-ui/IconButton';
-import ModeEditIcon from 'material-ui-icons/ModeEdit';
-import DeleteIcon from 'material-ui-icons/Delete';
 import isEmail from 'validator/lib/isEmail';
 import isMobilePhone from 'validator/lib/isMobilePhone';
 
@@ -56,7 +53,7 @@ export default class Row extends Component {
     return(
       <React.Fragment>
       {
-        this.props.participants.map(participant => {
+        this.props.displayParticipants.map(participant => {
           if(this.props.isEdit === participant.id){
             return <tr className="edit" key={participant.id}>
                 <td className="name">
@@ -86,12 +83,8 @@ export default class Row extends Component {
                       <span onClick={this.onEdit.bind(this, participant)}>{participant.phone}</span>
                     </td>
                     <td className="buttonColumn">
-                      <IconButton onClick={this.onEdit.bind(this, participant)}>
-                        <ModeEditIcon/>
-                      </IconButton>
-                      <IconButton onClick={this.onDelete.bind(this, participant)}>
-                        <DeleteIcon/>
-                      </IconButton>
+                      <i className="material-icons" onClick={this.onEdit.bind(this, participant)}>mode_edit</i>
+                      <i className="material-icons" onClick={this.onDelete.bind(this, participant)}>delete</i>
                     </td>
                   </tr>
           }
