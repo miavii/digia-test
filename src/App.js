@@ -105,7 +105,6 @@ export default class App extends Component {
 
     if(this.state.participants.length === 0 ){
       this.createUser();
-      console.log(this.state.participants)
     }
 
   }
@@ -253,7 +252,7 @@ export default class App extends Component {
       <div className="container">
         <Header/>
         <div className="content">
-          <h2>List of Participants</h2>
+          <h2>List of participants</h2>
           <UserForm
             {...this.state}
             changeText={this.handleChangeText}
