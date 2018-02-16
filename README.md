@@ -6,6 +6,7 @@ This is my submission to Digia for the front-end position.
 
 ### Installation
 
+Will need npm or homebrew.
 
 Clone the git repository.
 
