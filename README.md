@@ -6,7 +6,7 @@ This is my submission to Digia for the front-end position.
 
 
 
-### Installing
+### Installation
 
 
 Clone the git repository.
@@ -29,22 +29,8 @@ or
 npm start
 ```
 
-## Running the tests
+## Libraries used
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+  - [Validator.js](https://github.com/chriso/validator.js/)
+  - [Faker.js](https://github.com/marak/Faker.js)
+  - Material Icons
